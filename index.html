@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="可编辑的 GitHub 个人主页展示" />
+    <title>个人主页</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="noise"></div>
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="返回主页"><span class="brand-mark">&lt;/&gt;</span><span data-bind="name">林知夏</span></a>
+      <nav aria-label="主导航">
+        <a class="active" href="#home">主页</a>
+        <a href="#about">关于</a>
+        <a href="#projects">项目</a>
+        <a href="#journey">经历</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-button" id="theme-toggle" aria-label="切换主题" title="切换主题"><i data-lucide="sun"></i></button>
+        <button class="edit-button" id="open-editor"><i data-lucide="sliders-horizontal"></i><span>编辑主页</span></button>
+      </div>
+    </header>
+
+    <main id="home">
+      <section class="hero shell">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> AVAILABLE FOR INTERESTING WORK</p>
+          <h1>你好，我是<br /><strong data-bind="name">林知夏</strong><em>。</em></h1>
+          <p class="headline" data-bind="headline">独立开发者 / AI 产品设计师</p>
+          <p class="intro" data-bind="bio">我把复杂的技术想法，变成清晰、好用、有人情味的数字体验。现在专注于 AI 应用、创意编程和开源项目。</p>
+          <div class="hero-actions">
+            <a class="primary-button" href="#projects">查看项目 <i data-lucide="arrow-down-right"></i></a>
+            <a class="text-button" data-bind-link="github" href="https://github.com" target="_blank" rel="noreferrer">GitHub <i data-lucide="arrow-up-right"></i></a>
+          </div>
+        </div>
+        <div class="portrait-stage">
+          <div class="orb orb-one"></div><div class="orb orb-two"></div>
+          <div class="portrait-frame">
+            <img data-bind-image="avatar" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=700&q=85" alt="个人头像" />
+            <div class="portrait-caption"><span>01 / 01</span><span data-bind="role">PRODUCT BUILDER</span></div>
+          </div>
+          <span class="doodle doodle-one">✦</span><span class="doodle doodle-two">*</span>
+        </div>
+      </section>
+
+      <section class="stats shell" aria-label="个人数据">
+        <div><b data-bind="years">5</b><span>年创作与开发</span></div>
+        <div><b data-bind="projectCount">12</b><span>个公开项目</span></div>
+        <div><b data-bind="location">杭州，中国</b><span>目前所在地</span></div>
+        <div><a data-bind-link="email" data-bind="email" href="mailto:hello@example.com">hello@example.com</a><span>保持联系</span></div>
+      </section>
+
+      <section id="about" class="about-section shell">
+        <div class="section-label"><span>01</span><span>ABOUT ME</span></div>
+        <div class="about-content">
+          <h2>用技术做有温度的<br />产品和<span>体验。</span></h2>
+          <div><p data-bind="about">我喜欢从一个模糊的问题出发，经历研究、原型、代码与反馈，把它打磨成值得每天使用的工具。我的工作横跨产品设计、前端工程和 AI 应用。</p><p>业余时间，我会写一点开源代码、拍照，以及收集好看的界面细节。</p></div>
+        </div>
+        <div class="skills" id="skills-list"></div>
+      </section>
+
+      <section id="projects" class="projects-section">
+        <div class="shell">
+          <div class="section-heading"><div class="section-label"><span>02</span><span>SELECTED WORK</span></div><div><h2>值得展示的<br /><span>一些作品</span></h2><p>每一个项目都始于好奇心，最终服务于真实的人。</p></div></div>
+          <div class="project-grid" id="projects-list"></div>
+        </div>
+      </section>
+
+      <section id="journey" class="journey-section shell">
+        <div class="section-label"><span>03</span><span>JOURNEY</span></div>
+        <div class="journey-grid"><h2>一路走来，<br />仍在<span>探索。</span></h2><div class="timeline" id="timeline-list"></div></div>
+      </section>
+
+      <section class="contact shell"><p class="eyebrow"><span></span> LET'S MAKE SOMETHING NICE</p><h2>有想法？<br /><span>聊聊看。</span></h2><a data-bind-link="email" data-bind="email" href="mailto:hello@example.com">hello@example.com <i data-lucide="arrow-up-right"></i></a></section>
+    </main>
+
+    <footer class="shell"><span>© <span id="current-year"></span> <span data-bind="name">林知夏</span></span><span>Built with curiosity &amp; care.</span><a data-bind-link="github" href="https://github.com" target="_blank" rel="noreferrer">GitHub <i data-lucide="arrow-up-right"></i></a></footer>
+
+    <dialog id="editor-modal">
+      <div class="modal-header"><div><p class="eyebrow"><span></span> CONTENT STUDIO</p><h2>编辑你的主页</h2></div><button class="icon-button" id="close-editor" aria-label="关闭编辑器" title="关闭"><i data-lucide="x"></i></button></div>
+      <form id="profile-form">
+        <section><h3>基本信息</h3><div class="field-grid"><label>姓名<input name="name" required /></label><label>身份标签<input name="headline" required /></label><label>角色小字<input name="role" /></label><label>所在地<input name="location" /></label><label>邮箱<input name="email" type="email" required /></label><label>GitHub 链接<input name="github" type="url" /></label><label>经验年数<input name="years" type="number" min="0" /></label><label>头像图片链接<input name="avatar" type="url" /></label></div><label>主页简介<textarea name="bio" rows="3"></textarea></label><label>关于我<textarea name="about" rows="4"></textarea></label></section>
+        <section><div class="form-section-heading"><h3>技能标签</h3><button type="button" class="small-button" id="add-skill"><i data-lucide="plus"></i> 添加</button></div><div id="skills-editor" class="repeater"></div></section>
+        <section><div class="form-section-heading"><h3>项目</h3><button type="button" class="small-button" id="add-project"><i data-lucide="plus"></i> 添加项目</button></div><div id="projects-editor" class="repeater"></div></section>
+        <section><div class="form-section-heading"><h3>经历</h3><button type="button" class="small-button" id="add-timeline"><i data-lucide="plus"></i> 添加经历</button></div><div id="timeline-editor" class="repeater"></div></section>
+        <div class="form-actions"><button type="button" class="plain-button" id="reset-data">恢复示例</button><button type="submit" class="primary-button">保存并预览 <i data-lucide="check"></i></button></div>
+      </form>
+    </dialog>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="app.js?v=1"></script>
+  </body>
+</html>
